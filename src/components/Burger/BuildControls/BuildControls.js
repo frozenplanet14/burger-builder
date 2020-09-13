@@ -13,11 +13,19 @@ const controls = Object.keys(IngredientConst).filter((_, i) => i >= 4).map(k => 
 
 const buildControls = (props) => (
     <div className={classes.BuildControls}>
+        <p>Current Price: <strong>{props.price.toFixed(2)}</strong></p>
         {
             controls.map((c) => (
-                <BuildControl key={c.label} label={c.label} />
+                <BuildControl key={c.label} label={c.label}
+                    disabledInfo={props.disabledInfo[c.type]}
+                    added={() => props.ingredientAdded(c.type)}
+                    removed={() => props.ingredientRemoved(c.type)}/>
             ))
         }
+        <button
+            disabled={!props.purchaseable}
+            className={classes.OrderButton}
+            onClick={props.orderNow}>ORDER NOW</button>
     </div>
 );
 
