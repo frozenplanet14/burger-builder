@@ -6,11 +6,15 @@ import classes from './Toolbar.module.css';
 
 const toolbar = (props) => (
     <header className={classes.Toolbar}>
-        <div onClick={props.clicked}>Menu</div>
+        <div className={classes.DrawerToggle} onClick={props.clicked}>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         <div className={classes.Logo}>
             <Logo />
         </div>
-        <nav>
+        <nav className={classes.DesktopOnly}>
             <NavigationItems />
         </nav>
     </header>

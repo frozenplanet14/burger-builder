@@ -10,7 +10,7 @@ const sideDrawer = (props) => {
 
     return (
         <>
-            <Backdrop show={props.show} />
+            <Backdrop show={props.show} hide={props.hide} />
             <div
                 className={[classes.SideDrawer, props.show ? classes.Open : classes.Close].join(' ')}>
                 <div className={classes.Logo}>
