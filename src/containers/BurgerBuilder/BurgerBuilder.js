@@ -6,7 +6,7 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import axios from '../../axios.orders';
 import withErrorHandler from '../../components/hoc/withErrorHandler/withErrorHandler';
-import * as actionTypes from '../../store/actions';
+import * as actionTypes from '../../store/actions/burgerBuilder';
 import { connect } from 'react-redux';
 
 class BurgerBuilder extends Component {
@@ -16,10 +16,7 @@ class BurgerBuilder extends Component {
     }
 
     componentDidMount() {
-        // axios.get('/ingredients.json')
-        //     .then(({data}) => {
-        //         this.setState({ingredients: data});
-        //     });
+        this.props.initializeIngredients();
     }
 
     purchaseHandler = (show) => {
@@ -67,15 +64,16 @@ class BurgerBuilder extends Component {
 
 const mapStateToProps = state => {
     return {
-        ings: state.ingredients,
-        totalPrice: state.totalPrice
+        ings: state.burger.ingredients,
+        totalPrice: state.burger.totalPrice
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIngredientAdded: (payload) => dispatch({type: actionTypes.ADD_INGREDIENT, payload}),
-        onIngredientRemoved: (payload) => dispatch({type: actionTypes.REMOVE_INGREDIENT, payload})
+        onIngredientAdded: (payload) => dispatch(actionTypes.addIngredient(payload)),
+        onIngredientRemoved: (payload) => dispatch(actionTypes.removeIngredient(payload)),
+        initializeIngredients: () => dispatch(actionTypes.initIngredients())
     }
 }
 
