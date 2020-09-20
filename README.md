@@ -1,5 +1,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Creating a react app
+
+To create a new app, you may choose one of the following methods:
+
+`npx create-react-app my-app`
+`yarn create react-app my-app`
+
 ## Available Scripts
 
 In the project directory, you can run:
