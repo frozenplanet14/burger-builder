@@ -8,12 +8,8 @@
   box-sizing: border-box;
 }
 
-.Auth input {
-  display: block;
-}
-
 @media (min-width: 600px) {
   .Auth {
-      width: 500px;
+    width: 500px;
   }
 }
